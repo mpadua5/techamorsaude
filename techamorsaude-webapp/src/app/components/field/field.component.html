@@ -1,0 +1,30 @@
+<div class="flex">
+  <mat-form-field>
+    <mat-label>{{ fieldValues.label }}</mat-label>
+    <input
+      type="{{ fieldValues.type }}"
+      matInput
+      [formControl]="fieldFormControl"
+      [required]="fieldValues.required || false"
+    />
+    <mat-error
+      *ngIf="
+        fieldFormControl.hasError('email') &&
+        !fieldFormControl.hasError('required')
+      "
+    >
+      Email inválido
+    </mat-error>
+    <mat-error *ngIf="fieldFormControl.hasError('required')"
+      >O campo é obrigatório</mat-error
+    >
+  </mat-form-field>
+  <fa-icon
+    [icon]="iconButtonShowPassword"
+    class="float ml-3 text-blue-600"
+    *ngIf="buttonShowPassword"
+    (mousedown)="showPassword()"
+    (mouseup)="hidePassword()"
+    (mouseout)="hidePassword()"
+  ></fa-icon>
+</div>
