@@ -1,13 +1,14 @@
-import { Clinica } from "src/clinica/entities/clinica.entity";
-import { Column, Entity, OneToMany } from "typeorm";
+import { Clinica } from 'src/clinica/entities/clinica.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('regional')
 export class Regional {
-    @Column({ primary: true, generated: 'uuid' })
-    uuid: string;
-    @Column()
-    regional: string;
+  @PrimaryGeneratedColumn('uuid')
+  uuid: string;
+  
+  @Column()
+  regional: string;
 
-    @OneToMany(() => Clinica, (clinica) => clinica.regional)
-    clinica: Clinica[]
+  @OneToMany(() => Clinica, (clinica) => clinica.regional)
+  clinica: Clinica[];
 }

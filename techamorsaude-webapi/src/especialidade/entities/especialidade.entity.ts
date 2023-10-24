@@ -1,9 +1,9 @@
 import { Clinica } from "src/clinica/entities/clinica.entity";
-import { Column, Entity, ManyToMany } from "typeorm";
+import { Column, Entity, Generated, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('especialidade')
 export class Especialidade {
-    @Column({ primary: true, generated: 'uuid' })
+    @PrimaryGeneratedColumn("uuid")
     uuid: string;
     @Column()
     especialidade: string;

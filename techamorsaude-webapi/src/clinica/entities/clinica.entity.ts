@@ -1,10 +1,10 @@
 import { Especialidade } from "src/especialidade/entities/especialidade.entity";
 import { Regional } from "src/regional/entities/regional.entity";
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('clinica')
 export class Clinica {
-    @Column({ primary: true, generated: 'uuid' })
+    @PrimaryGeneratedColumn("uuid")
     uuid: string;
     @Column()
     razaosocial: string;
@@ -17,10 +17,12 @@ export class Clinica {
     @Column()
     ativa: boolean;
     
-    @ManyToOne(() => Regional, (regional) => regional.clinica)
+    @ManyToOne(() => Regional, (regional) => regional.clinica, { nullable: false })
     regional: Regional
 
     @ManyToMany(() => Especialidade, (especialidade) => especialidade.clinica)
-    @JoinTable()
+    @JoinTable({
+        name: "clinica_especialidade"
+    })
     especialidade: Especialidade[];
 }
