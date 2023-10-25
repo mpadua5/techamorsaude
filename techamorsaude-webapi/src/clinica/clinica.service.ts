@@ -21,11 +21,18 @@ export class ClinicaService {
   }
 
   async findAll() {
-    return await this.clinicaRepository.find();
+    return await this.clinicaRepository.find({
+      relations: {
+          regional: true,
+      },
+  });
   }
 
   async findOne(uuid: string) {
-    return await this.clinicaRepository.findOneBy({ uuid: uuid});
+    return await this.clinicaRepository.createQueryBuilder('clinica')
+      .where('clinica.uuid = :uuid', { uuid: uuid })
+      .leftJoinAndSelect('clinica.regional', 'regional')
+      .getOne()
   }
 
   async update(uuid: string, updateClinicaDto: UpdateClinicaDto) {
