@@ -4,7 +4,6 @@ import { UpdateClinicaDto } from './dto/update-clinica.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Clinica } from './entities/clinica.entity';
 import { Repository } from 'typeorm';
-import { ok } from 'assert';
 
 @Injectable()
 export class ClinicaService {
