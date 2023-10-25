@@ -1,12 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Get, Injectable, Param } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Regional } from './entities/regional.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class RegionalService {
+  constructor(
+    @InjectRepository(Regional)
+    private regionalRepository: Repository<Regional>
+  ){}
+  
   findAll() {
-    return `This action returns all regional`;
+    return this.regionalRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} regional`;
+  findOne(uuid: string) {
+    return this.regionalRepository.findOneBy({ uuid: uuid });
   }
 }

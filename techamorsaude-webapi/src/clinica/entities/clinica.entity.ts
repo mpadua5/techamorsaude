@@ -10,8 +10,8 @@ export class Clinica {
     razaosocial: string;
     @Column()
     nomefantasia: string;
-    @Column()
-    cnpj: number;
+    @Column({ unique: true })
+    cnpj: string;
     @Column()
     datainauguracao: Date;
     @Column()

@@ -11,7 +11,7 @@ export class RegionalController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.regionalService.findOne(+id);
+  findOne(@Param('uuid') uuid: string) {
+    return this.regionalService.findOne(uuid);
   }
 }

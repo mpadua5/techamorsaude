@@ -1,12 +1,9 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 import { v4 as uuidv4 } from 'uuid';
-import fs from 'fs';
 
 export class RegionalInsert1697888358376 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     try {
-      // const script = fs.readFileSync(`./sql/1697888358376-regional_insert.sql`, "utf-8")
-      // console.log(`TESTE ----> ${script}`)
       await queryRunner.query(`INSERT INTO regional VALUES 
             ("${uuidv4()}", "Alto Tietê"),
             ("${uuidv4()}", "Interior"),
@@ -30,6 +27,11 @@ export class RegionalInsert1697888358376 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DELETE FROM regional`);
+    try{
+      await queryRunner.query(`DELETE FROM regional`);
+
+    } catch(erro) {
+      console.log(erro)
+    }
   }
 }

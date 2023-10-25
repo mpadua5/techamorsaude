@@ -17,18 +17,18 @@ export class ClinicaController {
     return this.clinicaService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clinicaService.findOne(+id);
+  @Get(':uuid')
+  findOne(@Param('uuid') uuid: string) {
+    return this.clinicaService.findOne(uuid);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClinicaDto: UpdateClinicaDto) {
-    return this.clinicaService.update(+id, updateClinicaDto);
+  @Patch(':uuid')
+  update(@Param('uuid') uuid: string, @Body() updateClinicaDto: UpdateClinicaDto) {
+    return this.clinicaService.update(uuid, updateClinicaDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clinicaService.remove(+id);
+  @Delete(':uuid')
+  remove(@Param('uuid') uuid: string) {
+    return this.clinicaService.remove(uuid);
   }
 }
