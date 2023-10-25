@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateEspecialidadeDto {
     @ApiProperty()
-    uuid: string
+    uuid: string;
     @ApiProperty()
-    especialidade: string
+    especialidade: string;
 }

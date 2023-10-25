@@ -15,6 +15,6 @@ export class CreateClinicaDto {
     ativa: boolean;
     @ApiProperty()
     regional: CreateRegionalDto
-    @ApiProperty()
-    especialidade: CreateEspecialidadeDto[];
+    @ApiProperty({ type: [CreateEspecialidadeDto] })
+    especialidade: CreateEspecialidadeDto[] ;
 }
