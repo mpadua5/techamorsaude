@@ -13,6 +13,11 @@ async function bootstrap() {
     .setDescription('API para fins de testes e estudos')
     .setVersion('1.0')
     .addTag('techamorsaude')
+    .addBearerAuth({
+      type: 'http',
+      description: "Autenticação com JWT. Inserir somente o Token a baixo",
+      bearerFormat: "Bearer {{Token}}"
+    })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/v1/swagger', app, document);

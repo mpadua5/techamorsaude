@@ -1,6 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { RegionalService } from './regional.service';
+import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@UseGuards(JwtGuard)
 @Controller('regional')
 export class RegionalController {
   constructor(private readonly regionalService: RegionalService) {}
